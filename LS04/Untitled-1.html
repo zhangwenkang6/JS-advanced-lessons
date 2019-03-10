@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>    
+    //ECMScript是一个语言标准，JS是完全基于ES实现的脚本语言
+    //当前主流版本 ES5 ES6 
+
+    if(true){
+        var username = "zhangsan";
+        // 非严格模式下，不使用var来显示声明变量，该变量会转变为全局变量
+    }
+    console.log(username);
+    //ES5标准下，没有块级作用域
+
+    for(var i=0;i<3;i++){   
+    }
+    console.log(i);
+
+    function fun1(){
+        console.log(this);
+        //非严格模式下，普通函数中this指向全局变量
+    }
+    function fun2(){
+        'use strict'
+        console.log(this);
+        //严格模式下，普通函数中this为undefined
+    }
+    fun1();
+    fun2();
+
+    function fun3(){
+        console.log(this === undefined?true:false);
+        //判断是否为严格模式，如果是false，则非严格模式，若为ture，则为严格模式
+    }
+    fun3();
+
+    // var str = "abcd";
+    // str.length= 9;
+    // console.log(str.length);
+    //等同于
+    var str = "abcd";
+    var strObject =new String(str);
+    strObject.length= 9;
+    console.log(new String(str).length);
+
+    var a= 1;
+    switch(a){
+        case 1:
+            console.log(a);
+            a++;
+        case 2:
+            console.log(a);
+            a++;
+        case 3:
+            console.log(a);
+            a++;
+            break;
+        case 4:
+            console.log(a);
+            a++;
+        default:
+            console.log(a);
+    }
+</script>
+</html>

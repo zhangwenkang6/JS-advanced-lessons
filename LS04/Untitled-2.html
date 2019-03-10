@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    'use strict'
+    //全局的，对所有页面JS代码均应用严格模式
+
+    function fn1(){
+        'use strict'
+        //针对函数的，该函数范围应用严格模式
+
+    }
+
+    var str = "abcd";
+    str.length= 9;
+    console.log(str.length);
+    //严格模式下，禁止删除不可改变的属性和未定义的变量
+
+    function fun2(a,a,b){
+        return a+b;
+    }
+    fun2(2,3,4);
+    //严格模式下禁止函数参数重名
+</script>
+</html>

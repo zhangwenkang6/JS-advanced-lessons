@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+</body>
+	<script>
+		var username="zhangsan";
+		var age = 10;
+		function setName(){
+			username= "lili";
+		}
+		function setAge(){
+			age = 20;
+		}
+		function setInfor(){
+			setName();
+			setAge();
+		}
+		setInfor();
+		document.write(age);
+	</script>
+</html>

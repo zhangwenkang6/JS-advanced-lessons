@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 = [1,2,3,4,5];
+        var arr2=arr1;  //浅拷贝
+        arr2[0]=6;
+        console.log(arr1);
+
+        var obj3= {"uesr":"zhangsan"};
+        var obj4= {};
+        var uesr = obj3.uesr;
+        obj4.user= uesr;  //深拷贝
+
+        var obj5={},obj6={};
+        var obj7=3,obj8=3;
+        console.log(obj5==obj6); //引用类型，判断指向的内存空间是否相同
+        console.log(obj7==obj8); //双=判断变量的值，三=判断类型和值
+
+        var din=function(x){
+            x.uesr="lisi";
+        }
+        din(obj3);
+        console.log(obj3.uesr);
+        
+    </script>
+</body>
+</html>
