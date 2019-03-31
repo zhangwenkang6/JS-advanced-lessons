@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //对象instanceof构造函数
+    //1、判断对象是否可以使用构造函数实例化得到
+    //2、判断在对象的原型链上能否找到构造函数的prototype属性
+    function Person(usernume,age){
+        this.usernume=usernume;
+        this.age = age;
+    }
+    var person = new Person("zhangsan",20);
+    console.log(person._proto_ == Person.prototype);
+    console.log(person instanceof Person);
+
+    function fun1(){
+        for(var i=0;i<arguments.length;i++)
+            console.log(arguments[i]);
+        console.log(fun1.length);
+        //length表示形参的个数，arguments是实参数组类型合集
+    }
+
+    function fun2(){
+        console.log(fun2.caller);
+    }
+    function fun3(){
+        fun2();
+    }
+    fun3();
+    //返回函数的调用者
+
+    var objA = {"objName":"AAA"};
+    var objB = {"objName":"BBB"};
+    objA.foo = function(){
+        console.log(this.objName);
+    }
+    objA.foo();
+    //方法.call,可以切换该方法函数的指向
+    objA.foo.call(objB);
+
+    function Person1(username,age){
+        this.username = username;
+        this.age = age;
+    }
+    function Student(username,age,sex){
+        Person1.call(this,username,age);
+        this.sex= sex;
+    }
+    var student = new Student("zhangsan",20,"male");
+    console.log(student);
+
+    function swim(m,n){
+    console.log("i'm:"+this.name+" i can swim ___",m,n);
+}
+    var bird = {
+        name:"polly",
+        fly:function(m,n){
+            console.log("i'm:"+this.name+" i can fly ___",m,n);
+        }
+    };
+
+    var me = {
+        name:"ABC"
+    };
+    swim(1,2);
+    swim.call(me,3,4);
+    bird.fly(5,6);
+    bird.fly.call(me,7,8);
+    bird.fly.apply(me,[7,8]);
+    swim.call(null,1,2);
+
+    //bind 切换函数的this指向，但不会立即执行，而是生成一个新的函数
+    var swim1 = swim.bind(bird,1,2);
+    console.log(swim1);
+</script>
+</html>

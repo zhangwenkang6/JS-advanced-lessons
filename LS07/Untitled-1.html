@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+</body>
+<script>
+    var fn1 = new Function('a','b','return a>b?a:b;');
+    fn1(2,3);
+    function test(){
+        console.log(this);
+    }
+    test();
+    var obj = {
+        x:0,
+        test:function(){
+            console.log(this.X);
+        }
+    };
+    obj.test();
+    function Person(user){
+        this.user = user;
+    }
+    Person.prototype.sayHi = function(){
+            console.log(this.user);
+        }
+    var person = new Person("zhangsan");
+    console.log(person.sayHi());
+
+    function a(x,y,z){
+        console.log(x+y+z);
+    }
+    a(4,5);
+
+    function b(c){
+        var s="";
+        for(var i=0;i<arguments.length;i++){
+            s += arguments[i];
+        }
+        document.write(s);
+    }
+    //arguments 获取实参，返回为数组机构
+    b('a','b','c','d');
+
+    var x=1;
+    function change(a){
+        a=2;
+        console.log(a,x);
+    }
+    change(x);
+
+    var obj = {x:1};
+    function fee(o){
+        o.x = 3;
+        console.log(obj.x,o.x);
+    }
+    fee(obj);
+    console.log(obj.x);
+
+    function g(a){
+        var copy;
+        switch(ture){
+            case(a instanceof String):
+            case(a instanceof Number):
+            case(a instanceof Boolean):
+                copy = a;
+            case(a instanceof Array):
+                copy=[];
+                for(i=o;i<a.length;i++){
+                    copy[i]= a[i];
+                }
+            break;
+        }
+    }
+</script>
+</html>

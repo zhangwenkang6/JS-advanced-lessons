@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj= {"user":"zhangsan","age":20};
+    obj.__proto__.sex="male";
+    for(var i in obj){
+        console.log(i);
+        console.log(obj[i]);
+    }
+
+    var arr1 = [1,2,3];
+    for(var j in arr1){
+        console.log(arr1[j]);  //不建议使用for in遍历数组
+    }
+
+    var max=10;
+    var fn=function(x){
+        console.log(max);
+        if(x>max){
+            console.log(x);
+        }
+    };
+    (function(f){
+        var max=100;
+        f(5);
+      })(fn);
+</script>
+</html>

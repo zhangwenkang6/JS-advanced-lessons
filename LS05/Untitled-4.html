@@ -1,0 +1,27 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>    
+        var str1="A".localeCompare("b"); 
+        console.log(str1);
+
+        var str2="abcdefghi";
+        console.log(str2.slice(0,-1));
+        console.log(str2.substr(0,3));
+        console.log(str2.substring(0,7)); // 超出 0-str.length 范围的，会被截断
+        var str3=str2.split(" ");
+        console.log(str3[0]);
+
+        var str4 = "   a bc  ";
+        console.log(str4.trim());
+        console.log(str2.concat(str4));
+    </script>
+    </html>
