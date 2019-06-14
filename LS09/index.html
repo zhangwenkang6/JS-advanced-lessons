@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LS04</title>
+    <!--<script src="./js/demo01.js"></script>-->
+    <!--<script src="./js/demo02.js"></script>-->
+    <!--<script src="./js/demo03.js"></script>-->
+    <script>
+        var fun1=function(){
+            console.log(b);
+            var b= 2;
+        }
+        fun1();
+        function fun2(){
+            fun3();
+            function fun3(){
+                console.log('hello');
+            }
+        }
+        fun2();
+
+        var a=2;
+        function fun4(){
+            a=4;
+            console.log(a);
+            function fun5(){
+                var a=3;
+                console.log(a);
+            }
+            fun5();
+        }
+        fun4()
+        console.log(a);
+
+        var name='jake';
+        function fun5(){
+            console.log('jake');
+        }
+        function fun6(){
+            var name = 'bill';
+            fun5();
+        }
+        fun6();
+        //词法作用域不会被函数从哪里调用等因素影响，与调用形式无关
+        //变量的作用域与函数的定义有关
+
+        if(true){
+            let a=12;
+            console.log(a);
+        }
+        console.log(a);
+
+        //代码执行上下文
+        //指的是代码执行的时候，相关的上下文环境
+        //函数的调用栈，this的指向、作用域及作用域中的变量
+        var x=1;
+        var y=2;
+        function fun6(){
+            var z=3;
+            var u=4;
+            function fun7(){
+                var v=5;
+                var w=6;
+                function fun8(){
+                    var xx=7;
+                    var yy=8;
+                }
+                fun8();
+            }
+            fun7();
+        }
+        fun6();
+    </script>
+    <!--<script src="./js/demo05.js"></script>-->
+    <!--<script src="./js/demo06.js"></script>-->
+    <!--<script src="./js/demo07.js"></script>-->
+    <!--<script src="./js/demo08.js"></script>-->
+    <!--<script src="./js/demo09.js"></script>-->
+    <!--<script src="./js/demo10.js"></script>-->
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<SCript>
+    var j1 = {"name":"jack","obj":{"x":1,"y":2},"arr":[1,2,"3"]};
+    var json = JSON.stringify(j1); //对象或数组转化为JSON字符串
+    console.log(json);
+    console.log(typeof json);
+
+    var jsonObject = JSON.parse(json);  //将JSON转化为JS对象的结构
+    console.log(jsonObject);
+    console.log(typeof jsonObject);
+
+    var jsObject={
+        'user':'zhangsan',
+        'age':20,
+        'address':{
+            'addname':'sjz',
+        }
+    };
+    
+    var o7 = JSON.parse('{"p": 5,"x":1}', function (k, v) {
+        if(k === 'p') return 2*v;    // 
+        if(k === 'x') return 3*v;
+        if(k === '')  return v;      //最终到达顶层    
+    });                             
+    console.log(o7);
+
+    var o8 = JSON.parse('{"1": 1, "2": 2,"3": {"4": 4, "5": {"6": 6}}}',
+        function (k, v) {
+            console.log(k); // 输出当前的属性名，从而得知遍历顺序是从内向外的，
+            // 最后一个属性名会是个空字符串。
+            return v;       // 返回原始属性值，相当于没有传递 reviver 参数。
+        });
+    console.log(o8);
+</SCript>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //立即执行表达式 常见形式
+    (function max( x,y){
+        console.log("the max is",x>y?x:y);
+    }(2,3)); 
+
+    (function (x,y){ //可以没有函数名
+    console.log("the min is",x<y?x:y);
+    })(2,3);
+
+    var userId = 123;
+    document.onclick = function () {
+        console.log("userId = ",userId);
+        //alert("userId = "+userId);
+    };
+
+//一长串代码后，假如看不见上述代码了
+    (function () {
+        var a=2,b=3;
+        if(a<b){
+            var userId = 234;
+        }
+    }());
+
+    function f(){
+    var getNumFuncs = [];//函数数组
+    for(var i=0;i<10;i++){
+        getNumFuncs[i] = function(){
+            return i;
+        };
+    }
+    return getNumFuncs;//设置断点，查看变量共享问题
+    }
+    var tmp = f();
+    console.log(tmp[3]());//tmp[0]()...tmp[9]()都为几3还是10？
+
+    function f(){
+    var getNumFuncs = [];//函数数组
+    for(var i=0;i<10;i++){
+        (function (j) {
+            getNumFuncs[j] = function(){return j;};
+        })(i);
+    }
+    return getNumFuncs;//设置断点，查看变量共享问题
+    }
+    var tmp = f();
+    tmp[3]();
+    
+    var max = 10;
+var fn = function (x) {
+    if(x > max){
+        console.log(x);
+    }
+};
+(function (f) {
+    var max = 100;
+    f(15);
+})(fn);
+    </script>
+</body>
+</html>

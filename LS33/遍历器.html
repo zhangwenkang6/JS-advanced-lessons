@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = ['a','b','c'];
+    let iter = arr[Symbol.iterator]();
+
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+
+    let values = [1,2,3];
+    for(let aaa of values){
+        console.log(aaa);
+    }
+
+    let set = new Set().add('a').add('b').add('c');
+    let [x,y] =set;
+    console.log(x,y);
+    let [first,...rest] = set;
+    console.log(first,rest);
+
+    var str = 'hello';
+    console.log([...str]);
+    let str1 = ['b','c'];
+    console.log(['a',...str1,'d']);
+
+    let generator = function *() {  
+        yield 1;
+        yield* [2,3,4];
+        yield 5;
+    };
+    var iterator = generator();
+
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+</script>
+</html>

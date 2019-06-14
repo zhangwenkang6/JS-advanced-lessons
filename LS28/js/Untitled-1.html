@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let {toString: s1} = 123;
+    console.log(s1); //
+    console.log(s1 === Number.prototype.toString )// true
+    //toString() {  [native code]  };
+    let num = new Number(123);
+    let{toString:s} = num ;
+    console.log(s);
+    console.log(num.toString()+5);
+
+    let {toString: s2} = true;
+    console.log(s2); //
+    s2 === Boolean.prototype.toString // true
+
+    let{k1:v1,k2:v2} = {k1:'aaa',v2:'222'};
+    console.log(v1,v2)
+
+    let [x,y] = [1,2];
+    [y,x] = [x,y];
+    console.log(x,y);
+
+    var ss = 'aaa_aa_a';
+    var r1 = /a+/g;
+    var r2 = /a+/y;
+    r1.exec(ss); // ["aaa"]
+    r2.exec(ss); // ["aaa"]
+    r1.exec(ss); // ["aa"]
+    r2.exec(ss); // null
+    r2.exec(ss);
+</script>
+</html>

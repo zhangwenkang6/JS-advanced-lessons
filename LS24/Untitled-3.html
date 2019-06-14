@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../jquery.js"></script>
+</head>
+<body>
+    <table>
+        <td>用户名：</td>
+        <td>
+            <input type="text" name="username" id="username">
+        </td>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="text" name="password" id="password"> 
+            </td>
+        </tr>
+    </table>
+    <button>登陆</button>
+</body>
+<script>
+    $('#username').blur(function () {  
+        var $error =$("<span class ='error'> 用户名不能为空</span>");
+        var val = $(this).val();
+        if(val == '')
+            $(this).parent().append($error);
+        else
+            $('.error').remove();
+    })
+</script>
+</html>

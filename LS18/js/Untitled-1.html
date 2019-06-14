@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+    console.log(names.filterspace);
+    Array.prototype.filterspace = function(){
+        var arr1 = this;
+        var result = arr1.map(function(value){
+            return value.trim();
+        });
+        return result;
+    }
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //正则对象的创建方式一 通过字面量直接创建
+    var reg1 = /[bcf]at/gi;
+
+    //正则对象的创建方式二 通过RegExp构造函数来实例化正则对象
+    var reg2 = new RegExp(/[bcf]at/,"gi");//常见形式
+    var reg3 = new RegExp("[bcf]at","i");
+
+    console.log("a fAt bat ,a faT cat".match(reg1));//["fAt", "bat", "faT", "cat"]
+    console.log("a fAt bat ,a faT cat".match(reg2));//["fAt", "bat", "faT", "cat"]
+    console.log("a fAt bat ,a faT cat".match(reg3));//["fAt", "bat", "faT", "cat"]
+
+    // var reg4 = /ab/gi;
+    // var reg4 = /[a\d]/gi;
+    // var reg4 = /[abc][0-9]/gi;
+    var reg4 = /\d[a-f]\s/gi;
+    // var str4 = 'abcdefg2222';
+    var str4 = 'a7a aa8sf8'
+    console.log(str4.replace(reg4,'*'));
+
+    //量词 注意*在这里是量词，不是充当通配符，充当通配符的是 .
+    //? 出现0次或1次（最多出现1次）
+    console.log("AaBbAb_AaaBbbAba".replace(/Aa?/g,0));
+
+    //+ 出现1次或多次（至少出现1次）
+    console.log("AaBbAb_AaaBbbAba".replace(/Aa+/g,0));
+
+    //* 出现0次或多次（任意次）
+    console.log("AaBbAb_AaaBbbAba".replace(/Aa*/g,0));
+
+    console.log("AaBbAb_AaaBbbAba".replace(/Aa{1}/g,0));
+    console.log("AaBbAb_AaaBbbAba".replace(/Aa{2}/g,0));
+
+    //{n,m} 出现n到m次
+    console.log("AaBbAb_AaaBbbAba".replace(/Aa{1,2}/g,0));
+
+
+    //贪婪模式和非贪婪模式
+    console.log("12345678".replace(/\d{3,6}/,'X'));//默认为贪婪模式  X78
+
+    console.log("12345678".replace(/\d{3,6}?/,'X'));//设置为非贪婪模式 在量词后加？X45678
+
+    console.log("12345678".replace(/\d{3,6}?/g,'X'));//返回什么？
+
+    console.log("NameNameName_11111".replace(/Name{3}/,"X"));
+    console.log("NameNameName_11111".replace(/(Name){3}/,"X"));
+
+    console.log("a1b2c3d4e5".replace(/[a-z]\d{3}/,"X"));
+    console.log("a1b2c3d4e5".replace(/([a-z]\d){3}/,"X"));
+    console.log("a1b2c3d4e5".replace(/([a-z]\d){3,4}/,"X"));
+    console.log("a1b2c3d4e5".replace(/([a-z]\d){3,4}?/,"X"));
+</script>
+</html>

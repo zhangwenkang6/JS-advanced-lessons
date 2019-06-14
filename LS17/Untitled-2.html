@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Person(name,age) {  
+        this.name = name;
+        this.age =age;
+    }
+    Person.prototype.showName = function () {  
+        console.log(this.name);
+    }
+    function Student(name,age,id){
+        Person.call(this,name,age);
+        this.id = id;
+    }
+    //Student.prototype.__proto__ = Person.prototype;
+    Student.prototype=Object.create(Person.prototype);
+    Person.constructor = Student
+    var s1 = new Student('x',21,2017001);
+    var s2 = new Student('y',22,2017002);
+    console.log(s1);
+    s1.showName();
+    s2.showName();
+
+    function Animal(name,weight){
+        this.name=name;
+        this.weight= weight;
+    }
+    Animal.prototype.run = function(){
+        console.log(this.name+' can run');
+    }
+    function Bird(name,weight,color,height) { 
+        Animal.call(this,name,weight);
+        this.color = color;
+        this.height = height;
+     }
+     Bird.prototype.__proto__ = Animal.prototype;
+     var b1 = new Bird('lisi',22,'red',10);
+     console.log(b1);
+     b1.run();
+</script>
+</html>

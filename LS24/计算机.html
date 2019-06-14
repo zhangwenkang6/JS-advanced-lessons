@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>
+            calculate
+        </title>
+        <meta http-equiv="Content-Type" content="text/html;charaset = utf-8" />
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <style type="text/css">
+            body {
+                font:bolder 26px 楷体;
+            }
+            #result {
+                text-align:right;
+            }
+            table,td {
+                border:1px solid #C0C0C0;
+            }
+            td {
+                padding:10px;
+            }
+            button {
+                width:50px;
+                height:50px;
+            }
+            button:hover{
+                box-shadow:  3px 3px 3px #eee;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <table>
+            <tr>
+                <td colspan="3" id="result">
+                    0
+                </td>
+                <td>
+                    <button type="button" value="C" id="reset">
+                        C
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="1" class='num'>
+                        1
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="2" class='num'>
+                        2
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="3" class='num'>
+                        3
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="+" class="operate">
+                        +
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="4"  class='num'>
+                        4
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="5" class='num'>
+                        5
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="6" class='num'>
+                        6
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="-" class="operate">
+                        -
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="7" class='num'>
+                        7
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="8" class='num'>
+                        8
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="9" class='num'>
+                        9
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="*" class="operate">
+                        *
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="0" class='num'>
+                        0
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="." class='num'>
+                        .
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="=" id="count">
+                        =
+                    </button>
+                </td>
+                <td>
+                    <button type="button" value="/" class="operate">
+                        /
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        var sign = 0;
+        $('button').click(function(){
+            var a=$(this).attr('value');
+            var b=$('#result').html();
+            if(sign ==0){
+                sign=1;
+                if(this.className == 'num'){
+                    var a=$(this).attr('value');
+                    $('#result').html(a);
+                }
+                else if(this.className == 'operate'){  
+                    var a=$(this).attr('value');
+                    var b=$('#result').html();
+                    $('#result').html(b+a);
+                }
+            }
+            else{
+                $('#result').html(b+a);
+            }
+        })
+        $('#count').click(function(){
+            sign = 0;
+            var b=$('#result').html();
+            b = b.substr(0,b.length-1);
+            var a=eval(b).toFixed(10);
+            var c=parseFloat('0.'+a.toString().split(".")[1]);
+            var d=parseInt(eval(b)/1);
+            if(c>0){
+                var x=parseFloat(d)+parseFloat(c);
+                x=x.toFixed(2);
+                $('#result').html(x);
+            }
+            else{
+                $('#result').html(d);
+            }
+        });
+        $('#reset').click(function () {  
+            $('#result').html(0);
+            sign = 0;
+        })
+    </script>
+</html>

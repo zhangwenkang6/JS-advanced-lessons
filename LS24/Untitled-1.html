@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../jquery.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 在线引用 -->
+    <style>
+        div{
+            background-color: #35e712;
+
+        }
+        .yyy{
+            border: 2px yellow solid;
+        }
+        .xxx{
+            border: 2px red solid;
+        }
+    </style>
+    
+</head>
+<body>
+    <table>
+        <div>层一</div>
+        <div>层02</div>
+        <div>层3</div>
+        <div>层4</div>
+    </table>
+    <img src="1.jpg" alt="" class="yyy">
+</body>
+<script>
+    // $('body').css('background','red');
+    $('div').mousemove(function(){
+        $(this).css('background','blue');
+    })
+    $('div').mouseout(function(){
+        $(this).css('background','grey');
+    })
+    $('div').click(function(){
+        $(this).css('background','red');
+    })
+
+    /*attr('属性名'); 获取特定属性的属性值。
+        attr('属性名'，'属性值'); 设置特定属性的属性值。*/
+    $('img').click(function(){
+        $(this).attr('src','2.gif');
+        console.log($(this).attr('src'));
+        $(this).addClass('xxx');
+    })
+</script>
+</html>

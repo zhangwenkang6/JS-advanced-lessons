@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*对象 instanceof 构造函数
+    1.判断函数是否可以受用构造函数实例化得到
+    2.判断在对象的原型链上能否找到构造函数的原型
+
+    对象._proto_(....) == 构造函数.prototype*/
+
+    console.log(Object instanceof Function);
+    console.log(Object._proto_==Function.prototype);
+    console.log(Object instanceof Object);
+
+    function Person(a,b){
+        this.user= a;
+        this.age = b;
+    }
+    var p = new Person('zhangsan',20);
+    console.log(p.age);
+    console.log(p['age']);
+    console.log(p instanceof Person);
+    console.log(p._proto_==Person.type);
+
+    var o = {
+        _x:1.0,//如果都写成x会怎样
+        get x(){
+            return this._x;//如果都写成x会怎样
+        },
+        set x(val){
+            this._x = val;//如果都写成x会怎样
+        }
+    };
+    console.log(o.x);//1
+    o.x = 2;
+    console.log(o.x,o._x);
+
+    var o = {
+        _x:1.0,
+        get x(){
+            return this._x;
+        }
+    };
+    console.log(o.x);//1
+    o.x = 2;
+    console.log(o.x,o._x);
+
+    var p1 = {
+        _name:"Jack",
+        _age:23,
+        set age(val){
+            if(val>0&&val<150){
+                this._age = val;
+            }else{
+                console.log("请设置正常年龄");
+            }
+        },
+        get age(){
+            return this._age;
+        }
+    };
+    p1.age = 178;
+    console.log(p1.age);
+
+    var p ={
+        x:1,
+        y:1,
+        get r(){return Math.sqrt(this.x*this.x+this.y*this.y);},
+        set r(newValue){
+            var oldValue = Math.sqrt(this.x*this.x+this.y*this.y);
+            var ratio = newValue/oldValue;
+            this.x*=ratio;
+            this.y*=ratio;
+        },
+        get theta(){return Math.atan2(this.y,this.x);}
+    };
+    var q = Object.create(p);
+    q.x = 2;
+    q.y = 2;
+    console.log(q.r);
+    console.log(q.theta);
+</script>
+</html>
