@@ -30,7 +30,7 @@
     console.log([...yyy]);
     console.log(yyy);
 
-    function* foo() {  
+    function* foo1() {  
         yield 1;
         yield 2;
         yield 3;
@@ -38,8 +38,38 @@
         yield 5;
         yield 6;
     }
-    for(let v of foo()){
+    for(let v of foo1()){
         console.log(v);
+    }
+
+    function* foo(){
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+    var f = foo();
+    f.next();
+    // {value: 1, done: false}
+    f.return("foo");
+    // {value: "foo", done: true}
+    f.next();
+    // {value: undefined, done: true}
+
+    var g = function* () {
+    try {
+        yield;
+    } catch (e) {
+        console.log('catch inner', e);
+        }
+    };
+    
+    var i = g();
+    i.next();
+    try {
+        i.throw('a');
+        i.throw('b');
+    } catch (e) {
+    console.log('catch outside', e);
     }
 </script>
 </html>
